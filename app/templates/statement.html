@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mutualism Monthly Statement</title>
+	<style>
+		th{
+			border-bottom: 1px solid #000000;
+			border-top: 1px solid #000000;
+			text-align: left;
+			width: 25%;
+		}
+
+
+		body{
+			padding: 10px;
+		}
+
+		p, h4,h3{
+			padding: 0px;
+			font-size: 9px;
+		}
+
+		.ageing-analysis-heading{
+			margin-top: 80px;
+		}
+	</style>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+	<!-- top logo section -->
+	<table width="100%">
+		<tr>
+			<td align="center">
+				<img src="https://cdn-images.mailchimp.com/template_images/gallery/generitech_black_vertical_125.png" alt="logo" width="150px">
+				<h4>Monthly Statement</h4>
+			</td>
+		</tr>
+	</table>
+	<br/><br/>
+	<!-- address and contact info section -->
+	<table width="100%">
+		<tr>
+			<td>
+				<p>Test street</p>
+				<p>Test surburb</p>
+				<p>test</p>
+				<p>test email</p>
+			</td>
+			<td>
+				<p>Statement date: {{statement_date}}</p>
+				<p>Statement number: {{ statement_number}}</p>
+				<p>Customer: {{customer_name}}</p>
+				<p>Email address: {{customer_email}}</p>
+			</td>
+		</tr>
+	</table>
+	<br/>
+	<br/>
+	<!-- repayments -->
+	<table width="100%" cellspacing="0">
+		<tr>
+			<th>
+				<h3>Date</h3>
+			</th>
+			<th>
+				<h3>Description</h3>
+			</th>
+			<th>
+				<h3>Amount paid</h3>
+			</th>
+		</tr>
+		<!-- loop through the repayments -->
+		{% for payment in payments %}
+		<tr>
+			<td>
+				<p>{{payment.fields.date|date:"D, d M, Y"}}</p>
+			</td>
+			<td>
+				<p>Repayment</p>
+			</td>
+			<td>
+				<p>{{payment.fields.amount}}</p>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	<br/>
+	<br/>
+	<!-- totals tables -->
+	<table width="100%" cellspacing="0">
+		<tr>
+			<th>
+				<h3>Total</h3>
+			</th>
+			<th></th>
+			<th>
+				<h3>{{total_payments}}</h3>
+			</th>
+		</tr>
+	</table>
+
+</body>
+</html>
